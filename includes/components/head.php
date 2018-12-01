@@ -5,4 +5,5 @@
 <meta name="author" content="SHT">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 <?=$shor10->loadStyle("reset.css")?>
-<?=$shor10->loadStyle("shor10.css")?>
+<?=$shor10->loadStyle("main.css")?>
+<?=$shor10->loadStyle("responsive.css")?>
