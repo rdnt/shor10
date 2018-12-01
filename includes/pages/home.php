@@ -5,4 +5,5 @@
     <input id="result" class="invis" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" readonly></input>
     <button id="submit-btn" type="submit">SHORTEN</button>
     <button id="copy-btn" class="invis" type="button">COPY</button>
+    <span id="error" class="invis"></span>
 </form>

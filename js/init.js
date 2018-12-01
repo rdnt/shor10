@@ -1,9 +1,12 @@
-function animateResult() {
-    $("#result").addClass("animate");
-    setTimeout(function() {
-        $("#result").removeClass("animate");
-    }, 500);
+$(window).on("load", function() {
+    asyncRequest("#shorten", "/api/shorten", init, callback);
+});
+
+function init() {
+    $("#error").removeClass("invis");
+    $("#error").html("");
 }
+
 function callback(data) {
     switch (data['response']) {
         case "SUCCESS":
@@ -19,14 +22,28 @@ function callback(data) {
             animateResult();
             break;
         case "EMPTY_URL":
+            $("#error").html("URL can't be empty.");
             console.log(data);
             break;
         case "INVALID_URL":
+            $("#error").html("URL entered is invalid.");
             console.log(data);
             break;
     }
-
 }
+
+$("#copy-btn").click(function() {
+    copyToClipboard("#result");
+    animateResult();
+});
+
+function animateResult() {
+    $("#result").addClass("animate");
+    setTimeout(function() {
+        $("#result").removeClass("animate");
+    }, 500);
+}
+
 function copyToClipboard(element) {
     var temp = $("<input>");
     $("body").append(temp);
@@ -34,10 +51,3 @@ function copyToClipboard(element) {
     document.execCommand("copy");
     temp.remove();
 }
-$(window).on("load", function() {
-    asyncRequest("#shorten", "/api/shorten", null, callback);
-});
-$("#copy-btn").click(function() {
-    copyToClipboard("#result");
-    animateResult();
-});
