@@ -9,7 +9,7 @@ trait Shor10 {
     }
 
     function createURLTable() {
-        $sql = "SELECT 1 FROM URLs LIMIT 1;";
+        $sql = "SELECT 1 FROM urls LIMIT 1;";
         $exists = $this->db->query($sql);
         // If the URLs table doesn't exist, create it
         if (!$exists) {
