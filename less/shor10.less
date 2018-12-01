@@ -17,18 +17,18 @@ main {
 #shorten {
     position: absolute;
     width: 400px;
-    height: 170px;
+    height: 200px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     h6 {
-        height: 40px;
+        height: 70px;
         margin-bottom: 10px;
         text-align: center;
         font-family: 'Roboto Mono', monospace;
-        color: #ddd;
-        font-size: 1.7rem;
-        line-height: 38px;
+        color: #aaa;
+        font-size: 2rem;
+        line-height: 70px;
     }
     input {
         width: calc(~"100% - 40px");
@@ -37,9 +37,9 @@ main {
         margin-bottom: 20px;
         border: none;
         font-family: 'Roboto Mono', monospace;
-        background-color: #ccc;
+        background-color: #aaa;
         &:focus {
-            background-color: #fff;
+            background-color: #ccc;
         }
     }
     button {
@@ -60,5 +60,21 @@ main {
             background-color: #28292a;
         }
 
+    }
+    #result {
+        &.animate {
+            animation: fade_in .5s ease;
+            @keyframes fade_in {
+                0% {
+                    background-color: #aaa;
+                }
+                50% {
+                    background-color: #eee;
+                }
+                100% {
+                    background-color: #aaa;
+                }
+            }
+        }
     }
 }
