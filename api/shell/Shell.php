@@ -18,13 +18,15 @@ class Shell extends Core {
     use Git;
     use Logging;
 
+    use Shor10;
+
     /**
      * Shell constructor method
      */
     function __construct($shell = null) {
         parent::__construct();
         $this->shell = $shell;
-        $this->name = "Core";
+        $this->name = "Shor10";
         $this->separator = "-";
         $this->patterns = array();
         $this->data_paths = array(
@@ -32,7 +34,7 @@ class Shell extends Core {
             "/data/logs/"
         );
         $this->pages = array(
-            "/" => ["Home", "home", "default"]
+            "/" => ["A not-so-much-ubiquitous URL shortener.", "home", "default"]
         );
         $this->errors = array(
             "/error/403" => ["403 Forbidden", "error/403", "error"],
@@ -40,7 +42,7 @@ class Shell extends Core {
             "/error/503" => ["503 Service Unavailable", "error/503", "error"]
         );
         $this->assets = array(
-            "css/core.css" => "style"
+            "css/shor10.css" => "style"
         );
         // Push the assets for faster loading
         // Required HTTP/2.0 to be enabled in the server configuration file
@@ -50,7 +52,7 @@ class Shell extends Core {
 
 }
 // Set the shell object name (for accessing in page segments and APIs)
-$shell = "core";
+$shell = "shor10";
 // Initialize the Shell object using a variable variable
 $$shell = new Shell($shell);
 // Initialize the connection to the database (optional) ------- |
@@ -59,3 +61,5 @@ $db = new Database($$shell, 'localhost', 'root', $shell); //    |  OPTIONAL DB
 $$shell->linkDB($db); // -------------------------------------- |
 // Render the page
 $$shell->renderPage();
+
+$shor10->setup();

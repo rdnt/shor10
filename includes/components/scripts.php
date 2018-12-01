@@ -1,3 +1,3 @@
-<?=$core->loadScript("jquery.min.js")?>
-<?=$core->loadScript("async.js")?>
-<?=$core->loadScript("init.js")?>
+<?=$shor10->loadScript("jquery.min.js")?>
+<?=$shor10->loadScript("async.js")?>
+<?=$shor10->loadScript("init.js")?>
