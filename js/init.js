@@ -29,6 +29,10 @@ function callback(data) {
             $("#error").html("URL entered is invalid.");
             console.log(data);
             break;
+        case "LINK_CREATION_FAILED":
+            $("#error").html("An internal error has occured.");
+            console.log(data);
+            break;
     }
 }
 

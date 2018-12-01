@@ -27,7 +27,7 @@ trait Shor10 {
             $result = $this->db->query($sql);
             if (!$result) {
                 // Couldn't insert the id! Report error.
-                $this->response("SHORTEN_ERROR");
+                $this->response("LINK_CREATION_FAILED");
             }
         }
         // Format the domain string (e.g. https://www.example.com)
