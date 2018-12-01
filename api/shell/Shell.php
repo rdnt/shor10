@@ -64,4 +64,4 @@ $shor10->setup();
 
 $shor10->prepareRedirect();
 // Render the page
-//$$shell->renderPage();
+$$shell->renderPage();
