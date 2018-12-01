@@ -1,7 +1,5 @@
 function animateResult() {
-    setTimeout(function() {
-        $("#result").addClass("animate");
-    }, 0);
+    $("#result").addClass("animate");
     setTimeout(function() {
         $("#result").removeClass("animate");
     }, 500);

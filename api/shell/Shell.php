@@ -26,7 +26,7 @@ class Shell extends Core {
     function __construct($shell = null) {
         parent::__construct();
         $this->shell = $shell;
-        $this->name = "Shor10";
+        $this->name = "shor10.me";
         $this->separator = "-";
         $this->patterns = array();
         $this->data_paths = array(
@@ -34,7 +34,7 @@ class Shell extends Core {
             "/data/logs/"
         );
         $this->pages = array(
-            "/" => ["A not-so-much-ubiquitous URL shortener.", "home", "default"]
+            "/" => ["Just another URL shortener.", "home", "default"]
         );
         $this->errors = array(
             "/error/403" => ["403 Forbidden", "error/403", "error"],

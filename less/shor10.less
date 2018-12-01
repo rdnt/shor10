@@ -16,19 +16,27 @@ main {
 }
 #shorten {
     position: absolute;
-    width: 400px;
-    height: 200px;
+    width: 450px;
+    height: 210px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    h6 {
-        height: 70px;
-        margin-bottom: 10px;
+    h5 {
+        height: 40px;
         text-align: center;
         font-family: 'Roboto Mono', monospace;
         color: #aaa;
         font-size: 2rem;
-        line-height: 70px;
+        line-height: 40px;
+    }
+    h6 {
+        height: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: 'Roboto Mono', monospace;
+        color: #aaa;
+        font-size: 1rem;
+        line-height: 30px;
     }
     input {
         width: calc(~"100% - 40px");
@@ -38,8 +46,13 @@ main {
         border: none;
         font-family: 'Roboto Mono', monospace;
         background-color: #aaa;
+        font-size: 1.05rem;
+        caret-color: #999;
         &:focus {
             background-color: #ccc;
+        }
+        &::placeholder {
+            color: #666;
         }
     }
     button {
@@ -62,17 +75,18 @@ main {
 
     }
     #result {
+        background-color: #ccc;
         &.animate {
             animation: fade_in .5s ease;
             @keyframes fade_in {
                 0% {
-                    background-color: #aaa;
+                    background-color: #ccc;
                 }
                 50% {
                     background-color: #eee;
                 }
                 100% {
-                    background-color: #aaa;
+                    background-color: #ccc;
                 }
             }
         }
