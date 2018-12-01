@@ -1,12 +1,15 @@
 <?php
-// Parameters array to validate
-$params = [
-    "url"
-];
-// Verifies request method is POST, and that the URL is sent and is not empty
-$post = $this->verifyPOSTData($params);
+// POST method required
+$this->checkPOST();
+// Verify URL is sent
+if (!isset($_POST['url'])) {
+    $this->response("FORM_DATA_MISSING");
+}
+if (empty($_POST['url'])) {
+    $this->response("EMPTY_URL");
+}
 // Assign variable
-$url = $post['url'];
+$url = $_POST['url'];
 // Verify the url is an actual URL
 if (!filter_var($url, FILTER_VALIDATE_URL)) {
     die("INVALID_URL");
