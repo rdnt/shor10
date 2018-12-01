@@ -31,7 +31,7 @@ trait Shor10 {
             }
         }
         // Format the domain string (e.g. https://www.example.com)
-        $domain = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'];
+        $domain = $_SERVER['SERVER_NAME'];
         // Format the final redirection URL
         $short_link = "$domain/$short";
         // Return it to the frontend
