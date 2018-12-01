@@ -64,9 +64,9 @@ $$shell = new Shell($shell);
 $db = new Database($$shell, 'localhost', 'root', $shell); //    |  OPTIONAL DB
 // Link the shell object with the database for easy accessing   |  CONNECTION
 $$shell->linkDB($db); // -------------------------------------- |
-
-$shor10->setup();
-
-$shor10->prepareRedirect();
-// Render the page
+// Create the URLs table if it doesn't already exist
+$shor10->createURLTable();
+// Handle redirection to long URLs from short URLs
+$shor10->handleRedirect();
+// Render the page content if a redirection hasn't taken place
 $$shell->renderPage();
