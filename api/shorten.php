@@ -10,6 +10,10 @@ if (empty($_POST['url'])) {
 }
 // Assign variable
 $url = $_POST['url'];
+// Add http:// in the front if no protocol defined
+if (substr($url, 0, 7) !== "http://" and substr($url, 0, 8) !== "https://") {
+    $url = "http://" . $url;
+}
 // Verify the url is an actual URL
 if (!filter_var($url, FILTER_VALIDATE_URL)) {
     $shor10->response("INVALID_URL");
