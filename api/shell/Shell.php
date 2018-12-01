@@ -19,7 +19,7 @@ class Shell extends Core {
     use Logging;
 
     use Shor10;
-    
+
     protected $valid_chars;
 
     /**
@@ -32,7 +32,7 @@ class Shell extends Core {
         $this->separator = "-";
         $this->valid_chars = "0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
         $this->patterns = array(
-            "short" => "/^[$valid_chars]{4}$/"
+            "short" => "/^[$this->valid_chars]{4}$/"
         );
         $this->data_paths = array(
             "/data/",
