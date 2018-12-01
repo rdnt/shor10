@@ -70,7 +70,7 @@ trait Shor10 {
             // Get the last 4 chars
             $short = substr($url, -4);
             // Make sure the shortlink only contains our valid characters!
-            if (preg_match("/^[0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{4}$/", $short)) {
+            if ($this->validatePattern("short", $short)) {
                 $sql = "SELECT long_url
                         FROM urls
                         WHERE short_url = '$short';

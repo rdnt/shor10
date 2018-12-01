@@ -19,6 +19,8 @@ class Shell extends Core {
     use Logging;
 
     use Shor10;
+    
+    protected $valid_chars;
 
     /**
      * Shell constructor method
@@ -28,7 +30,10 @@ class Shell extends Core {
         $this->shell = $shell;
         $this->name = "shor10.me";
         $this->separator = "-";
-        $this->patterns = array();
+        $this->valid_chars = "0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+        $this->patterns = array(
+            "short" => "/^[$valid_chars]{4}$/"
+        );
         $this->data_paths = array(
             "/data/",
             "/data/logs/"

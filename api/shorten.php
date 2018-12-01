@@ -1,53 +1,36 @@
 <?php
-// Example response
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    die("POST_REQUIRED");
-}
-
-if ( !isset($_POST['long']) ) {
-    die("LONG_URL_MISSING");
-}
-
-$long = $_POST['long'];
-
-if (substr($long, 0, 7) !== "http://" and substr($long, 0, 8) !== "https://") {
-    $long = "http://" . $long;
-}
-
-if (!filter_var($long, FILTER_VALIDATE_URL)) {
+// Parameters array to validate
+$params = [
+    "url"
+];
+// Verifies request method is POST, and that the URL is sent and is not empty
+$post = $this->verifyPOSTData($params);
+// Assign variable
+$url = $post['url'];
+// Verify the url is an actual URL
+if (!filter_var($url, FILTER_VALIDATE_URL)) {
     die("INVALID_URL");
 }
-
-$characters = str_split("0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz");
-
+// Valid characters array
+$characters = str_split($this->valid_chars);
+// Count how many combinations we can make with the characters and
+// short URLs with length = 4
+//   Read: Combinatorics: Permutation with Repetitions
 $objects_count = count($characters);
 $short_link_length = 4;
 $combinations = pow($objects_count, $short_link_length);
-
+// Create short URLs and find the first not to be already taken
+//   We use a for loop instead of while(true) so as to avoid an infinite loop
 for ($i=0; $i<$combinations; $i++) {
     $short = "";
     for ($i=0; $i<4; $i++) {
-        $short.= $characters[rand()%$objects_count];
+        // Get each character of the short URL randomly
+        $short.= $characters[rand() % $objects_count];
     }
-    if ($this->insertURL($short, $long)) {
+    // If the insert was successful, break
+    if ($this->insertURL($short, $url)) {
         break;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Respond to frontend with complete URL
 $shor10->response("SUCCESS", true);
