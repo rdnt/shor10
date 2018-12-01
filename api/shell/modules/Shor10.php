@@ -2,25 +2,6 @@
 
 // Trait that handles HTTP2 pushing of certain assets
 trait Shor10 {
-    // Creates the needed URL table if it doesn't already exist
-    function createURLTable() {
-        $sql = "SELECT 1 FROM urls LIMIT 1;";
-        $exists = $this->db->query($sql);
-        // If the URLs table doesn't exist, create it
-        if (!$exists) {
-            $schema = $_SERVER['DOCUMENT_ROOT'] . "/schema.sql";
-            // Get the schema file if it exists
-            if (file_exists($schema)) {
-                $sql = file_get_contents($schema);
-                // Perform all the queries inside the schema
-                $result = $this->db->multi_query($sql);
-                if (!$result) {
-                    // Couldn't create URLs table! Report error.
-                    die("Error while creating URLs table.");
-                }
-            }
-        }
-    }
     // Inserts a new long URL in the database and returns the short url
     function insertURL($short, $long) {
         // Escape the inserted long URL to combat mysql injections
