@@ -1,4 +1,5 @@
-<form action="/api/insert.php" method="POST">
+<form id="shorten">
+    <h6>SHOR10.ME</h6>
     <input name="long">
-    <input type="submit">
+    <button type="submit">SHORTEN</button>
 </form>
