@@ -20,6 +20,8 @@ class Shell extends Core {
 
     use Shor10;
 
+    protected $valid_chars;
+
     /**
      * Shell constructor method
      */
@@ -28,7 +30,10 @@ class Shell extends Core {
         $this->shell = $shell;
         $this->name = "shor10.me";
         $this->separator = "-";
-        $this->patterns = array();
+        $this->valid_chars = "0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+        $this->patterns = array(
+            "short" => "/^[$this->valid_chars]{4}$/"
+        );
         $this->data_paths = array(
             "/data/",
             "/data/logs/"
@@ -59,9 +64,9 @@ $$shell = new Shell($shell);
 $db = new Database($$shell, 'localhost', 'root', $shell); //    |  OPTIONAL DB
 // Link the shell object with the database for easy accessing   |  CONNECTION
 $$shell->linkDB($db); // -------------------------------------- |
-
-$shor10->setup();
-
-$shor10->prepareRedirect();
-// Render the page
+// Create the URLs table if it doesn't already exist
+$shor10->createURLTable();
+// Handle redirection to long URLs from short URLs
+$shor10->handleRedirect();
+// Render the page content if a redirection hasn't taken place
 $$shell->renderPage();

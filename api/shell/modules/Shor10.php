@@ -2,12 +2,7 @@
 
 // Trait that handles HTTP2 pushing of certain assets
 trait Shor10 {
-
-    function setup() {
-        // Create the URLs table if it doesn't exist
-        $this->createURLTable();
-    }
-
+    // Creates the needed URL table if it doesn't already exist
     function createURLTable() {
         $sql = "SELECT 1 FROM urls LIMIT 1;";
         $exists = $this->db->query($sql);
@@ -26,7 +21,7 @@ trait Shor10 {
             }
         }
     }
-
+    // Inserts a new long URL in the database and returns the short url
     function insertURL($short, $long) {
         // Escape the inserted long URL to combat mysql injections
         $long = $this->db->real_escape_string($long);
@@ -61,8 +56,8 @@ trait Shor10 {
         // Return it to the frontend
         $this->response("SUCCESS", $short_link);
     }
-
-    function prepareRedirect() {
+    // Handles redirection if the page requested is a short URL
+    function handleRedirect() {
         // Get the request URI
         $url = $_SERVER['REQUEST_URI'];
         // If it's length is 5 (slash inclusive, e.g. '/abcd')
@@ -70,7 +65,7 @@ trait Shor10 {
             // Get the last 4 chars
             $short = substr($url, -4);
             // Make sure the shortlink only contains our valid characters!
-            if (preg_match("/^[0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{4}$/", $short)) {
+            if ($this->validatePattern("short", $short)) {
                 $sql = "SELECT long_url
                         FROM urls
                         WHERE short_url = '$short';

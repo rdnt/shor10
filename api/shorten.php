@@ -1,53 +1,43 @@
 <?php
-// Example response
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    die("POST_REQUIRED");
+// POST method required
+$shor10->checkPOST();
+// Verify URL is sent
+if (!isset($_POST['url'])) {
+    $shor10->response("FORM_DATA_MISSING");
 }
-
-if ( !isset($_POST['long']) ) {
-    die("LONG_URL_MISSING");
+if (empty($_POST['url'])) {
+    $shor10->response("EMPTY_URL");
 }
-
-$long = $_POST['long'];
-
-if (substr($long, 0, 7) !== "http://" and substr($long, 0, 8) !== "https://") {
-    $long = "http://" . $long;
+// Assign variable
+$url = $_POST['url'];
+// Add http:// in the front if no protocol defined
+if (substr($url, 0, 7) !== "http://" and substr($url, 0, 8) !== "https://") {
+    $url = "http://" . $url;
 }
-
-if (!filter_var($long, FILTER_VALIDATE_URL)) {
-    die("INVALID_URL");
+// Verify the url is an actual URL
+if (!filter_var($url, FILTER_VALIDATE_URL)) {
+    $shor10->response("INVALID_URL");
 }
-
-$characters = str_split("0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz");
-
+// Valid characters array
+$characters = str_split($shor10->valid_chars);
+// Count how many combinations we can make with the characters and
+// short URLs with length = 4
+//   Read: Combinatorics: Permutation with Repetitions
 $objects_count = count($characters);
 $short_link_length = 4;
 $combinations = pow($objects_count, $short_link_length);
-
+// Create short URLs and find the first not to be already taken
+//   We use a for loop instead of while(true) so as to avoid an infinite loop
 for ($i=0; $i<$combinations; $i++) {
     $short = "";
     for ($i=0; $i<4; $i++) {
-        $short.= $characters[rand()%$objects_count];
+        // Get each character of the short URL randomly
+        $short.= $characters[rand() % $objects_count];
     }
-    if ($this->insertURL($short, $long)) {
+    // If the insert was successful, break
+    if ($shor10->insertURL($short, $url)) {
         break;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Respond to frontend with complete URL
 $shor10->response("SUCCESS", true);
