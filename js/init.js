@@ -5,21 +5,27 @@ function animateResult() {
     }, 500);
 }
 function callback(data) {
-    if (data['response'] === "SUCCESS") {
-        // Hide the input and button for submission
-        $("#input").addClass("invis");
-        $("#submit-btn").addClass("invis");
-        // Show the copy input and button
-        $("#result").removeClass("invis");
-        $("#copy-btn").removeClass("invis");
-        // Put result in the result input
-        var short_url = data['data'];
-        $("#result").val(short_url);
-        animateResult();
+    switch (data['response']) {
+        case "SUCCESS":
+            // Hide the input and button for submission
+            $("#input").addClass("invis");
+            $("#submit-btn").addClass("invis");
+            // Show the copy input and button
+            $("#result").removeClass("invis");
+            $("#copy-btn").removeClass("invis");
+            // Put result in the result input
+            var short_url = data['data'];
+            $("#result").val(short_url);
+            animateResult();
+            break;
+        case "EMPTY_URL":
+            console.log(data);
+            break;
+        case "INVALID_URL":
+            console.log(data);
+            break;
     }
-    else {
-        console.log(data['data']);
-    }
+
 }
 function copyToClipboard(element) {
     var temp = $("<input>");

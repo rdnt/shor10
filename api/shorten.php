@@ -1,21 +1,21 @@
 <?php
 // POST method required
-$this->checkPOST();
+$shor10->checkPOST();
 // Verify URL is sent
 if (!isset($_POST['url'])) {
-    $this->response("FORM_DATA_MISSING");
+    $shor10->response("FORM_DATA_MISSING");
 }
 if (empty($_POST['url'])) {
-    $this->response("EMPTY_URL");
+    $shor10->response("EMPTY_URL");
 }
 // Assign variable
 $url = $_POST['url'];
 // Verify the url is an actual URL
 if (!filter_var($url, FILTER_VALIDATE_URL)) {
-    die("INVALID_URL");
+    $shor10->response("INVALID_URL");
 }
 // Valid characters array
-$characters = str_split($this->valid_chars);
+$characters = str_split($shor10->valid_chars);
 // Count how many combinations we can make with the characters and
 // short URLs with length = 4
 //   Read: Combinatorics: Permutation with Repetitions
@@ -31,7 +31,7 @@ for ($i=0; $i<$combinations; $i++) {
         $short.= $characters[rand() % $objects_count];
     }
     // If the insert was successful, break
-    if ($this->insertURL($short, $url)) {
+    if ($shor10->insertURL($short, $url)) {
         break;
     }
 }
