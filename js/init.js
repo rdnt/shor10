@@ -5,6 +5,16 @@ $(window).on("load", function() {
 function init() {
     $("#error").removeClass("invis");
     $("#error").html("");
+    $("#input").removeClass("invalid");
+}
+
+function error(text) {
+    $("#error").html(text);
+    $("#error").addClass("animate");
+    $("#input").addClass("invalid");
+    setTimeout(function() {
+        $("#error").removeClass("animate");
+    }, 300);
 }
 
 function callback(data) {
@@ -22,16 +32,13 @@ function callback(data) {
             animateResult();
             break;
         case "EMPTY_URL":
-            $("#error").html("URL can't be empty.");
-            console.log(data);
+            error("URL can't be empty.");
             break;
         case "INVALID_URL":
-            $("#error").html("URL entered is invalid.");
-            console.log(data);
+            error("URL entered is invalid.");
             break;
         case "LINK_CREATION_FAILED":
-            $("#error").html("An internal error has occured.");
-            console.log(data);
+            error("An internal error has occured.");
             break;
     }
 }

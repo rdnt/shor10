@@ -1,5 +1,5 @@
 <form id="shorten">
-    <h5>SHOR10.ME</h5>
+    <a href="/"><h5>SHOR10.ME</h5></a>
     <h6>Just another URL shortener.</h6>
     <input id="input" name="url" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Insert long URL here">
     <input id="result" class="invis" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" readonly></input>
