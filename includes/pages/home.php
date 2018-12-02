@@ -1,5 +1,5 @@
 <a id="commit" target="_blank" href="https://github.com/ShtHappens796/Shor10">
-    <span><?=$shor10->getCommitHash("release")?></span>
+    <span><?=$shor10->getCommitHash()?></span>
 </a>
 <form id="shorten">
     <a href="/"><h5>SHOR10.ME</h5></a>
