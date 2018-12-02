@@ -1,0 +1,168 @@
+// out: ../css/main.css, sourcemap: false, compress: true, autoprefixer: defaults
+html {
+    background-color: #0d0e12;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+}
+main {
+    width: 100%;
+    height: 0;
+    user-select: none;
+}
+.invis {
+    display: none;
+}
+#shorten {
+    padding-top: 30px;
+    position: absolute;
+    height: 270px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    a {
+        text-decoration: none;
+        h5 {
+            height: 40px;
+            font-family: 'Roboto Mono', monospace;
+            color: #bbb;
+            font-size: 2rem;
+            line-height: 40px;
+            font-weight: 500;
+        }
+    }
+    h6 {
+        height: 30px;
+        margin-bottom: 20px;
+        font-family: 'Roboto Mono', monospace;
+        color: #888;
+        font-size: 1rem;
+        line-height: 30px;
+        font-weight: 300;
+    }
+    input {
+        width: calc(~"100% - 40px");
+        height: 40px;
+        padding: 5px 20px;
+        margin-bottom: 20px;
+        border: none;
+        font-family: 'Roboto Mono', monospace;
+        background-color: #0d0e12;
+        box-shadow: inset 0 0 0 1px #333;
+        font-size: 1.05rem;
+        caret-color: #999;
+        border-radius: 1px;
+        transition: background-color .2s ease;
+        color: #ddd;
+        font-weight: 300;
+        user-select: auto;
+        &::selection {
+            background: #888;
+        }
+        &.invalid {
+            box-shadow: inset 0 0 0 1px #b74545;
+            animation: invalid 1s ease;
+            @keyframes invalid {
+                0% {
+                    box-shadow: inset 0 0 0 1px #333;
+                }
+                20% {
+                    box-shadow: inset 0 0 0 1px #b74545;
+                }
+                40% {
+                    box-shadow: inset 0 0 0 1px #333;
+                }
+                60% {
+                    box-shadow: inset 0 0 0 1px #b74545;
+                }
+                80% {
+                    box-shadow: inset 0 0 0 1px #333;
+                }
+                100% {
+                    box-shadow: inset 0 0 0 1px #b74545;
+                }
+            }
+
+        }
+        &:focus {
+            background-color: #1d1e22;
+            &::placeholder {
+                color: #1d1e22;
+            }
+        }
+        &::placeholder {
+            transition: color .2s ease;
+            color: #fff;
+            font-weight: 200;
+            text-align: center;
+            opacity: .5;
+        }
+    }
+    button {
+        height: 50px;
+        width: 160px;
+        border: 0;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1.2rem;
+        color: #ccc;
+        line-height: 30px;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1px #666;
+        border-radius: 1px;
+        -webkit-tap-highlight-color: transparent;
+        transition: background-color .2s ease;
+        &:hover {
+            cursor: pointer;
+            background-color: #141518;
+        }
+        &:focus {
+            background-color: #141518;
+        }
+        &:active {
+            background-color: #1a1b1c;
+        }
+
+    }
+    #result {
+        background-color: #141518;
+        &.animate {
+            animation: result_fade .5s ease;
+            @keyframes result_fade {
+                0% {
+                    background-color: #141518;
+                }
+                50% {
+                    background-color: #1d1e22;
+                }
+                100% {
+                    background-color: #141518;
+                }
+            }
+        }
+    }
+    #error {
+        display: block;
+        margin-top: 20px;
+        width: 100%;
+        color: #aaa;
+        font-size: .9rem;
+        height: 40px;
+        font-family: 'Roboto Mono', monospace;
+        line-height: 40px;
+        opacity: 1;
+        &.animate {
+            transition: opacity .3s ease;
+            animation: error_fade .3s ease;
+            @keyframes error_fade {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
