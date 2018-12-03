@@ -3,7 +3,7 @@ $(window).on("load", function() {
 });
 
 function init() {
-    $("#error").removeClass("invis");
+    $("#error").addClass("invis");
     $("#error").html("");
     $("#input").removeClass("invalid");
 }
@@ -11,10 +11,15 @@ function init() {
 function error(text) {
     $("#error").html(text);
     $("#error").addClass("animate");
+    $("#error").removeClass("invis");
+    $("#input").addClass("animate");
     $("#input").addClass("invalid");
+    $("#input").focus();
     setTimeout(function() {
         $("#error").removeClass("animate");
-    }, 300);
+        $("#input").removeClass("animate");
+        $("#input").addClass("no-animate");
+    }, 1000);
 }
 
 function callback(data) {
@@ -44,8 +49,19 @@ function callback(data) {
 }
 
 $("#copy-btn").click(function() {
+    // Copies result input contents to clipboard
     copyToClipboard("#result");
     animateResult();
+});
+
+$('#input').keypress(function() {
+    // Remove the invalid class if user starts typing after error
+    $("#input").removeClass("invalid");
+});
+
+$('#input').focusout(function() {
+    // Resets the no-animate class after error and unfocus event
+    $("#input").removeClass("no-animate");
 });
 
 function animateResult() {

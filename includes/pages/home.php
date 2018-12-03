@@ -2,11 +2,13 @@
     <span><?=$shor10->getCommitHash()?></span>
 </a>
 <form id="shorten">
-    <a href="/"><h5>SHOR10.ME</h5></a>
+    <a class="title" href="/"><h5>
+        <span class="white">SHOR10</span><span class="black">.ME</span>
+    </h5></a>
     <h6>Just another URL shortener.</h6>
     <input id="input" name="url" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Insert long URL here">
     <input id="result" class="invis" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" readonly></input>
     <button id="submit-btn" type="submit">SHORTEN</button>
     <button id="copy-btn" class="invis" type="button">COPY</button>
-    <span id="error" class="invis"></span>
+    <span id="error" class="invis">asd</span>
 </form>
