@@ -12,4 +12,3 @@
     <button id="copy-btn" class="invis" type="button">COPY</button>
     <span id="error" class="invis">asd</span>
 </form>
-<div class="base"></div>
