@@ -35,37 +35,51 @@ main {
 #shorten {
     padding-top: 30px;
     position: absolute;
-    height: 270px;
+    height: 280px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    a {
+    .title {
         text-decoration: none;
         -webkit-tap-highlight-color: transparent;
+        height: 40px;
         h5 {
-            height: 40px;
+            display: inline-block;
             font-family: 'Roboto Mono', monospace;
             color: #bbb;
             font-size: 2rem;
             line-height: 40px;
             font-weight: 500;
+            height: 40px;
+            overflow: hidden;
+            span {
+                display: inline-block;
+                margin: 0;
+            }
+            .white {
+                color: #d94f39;
+            }
+            .black {
+                opacity: .85;
+                font-size: 1.5rem;
+            }
         }
     }
     h6 {
-        height: 30px;
-        margin-bottom: 20px;
+        height: 20px;
+        margin-bottom: 25px;
         font-family: 'Roboto Mono', monospace;
         color: #888;
         font-size: 1rem;
-        line-height: 30px;
+        line-height: 20px;
         font-weight: 300;
     }
     input {
         width: calc(~"100% - 40px");
         height: 40px;
         padding: 5px 20px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         border: none;
         font-family: 'Roboto Mono', monospace;
         background-color: #0d0e12;
@@ -73,7 +87,7 @@ main {
         font-size: 1.05rem;
         caret-color: #999;
         border-radius: 1px;
-        transition: background-color .2s ease;
+        transition: background-color .2s ease, box-shadow .5s ease;
         color: #ddd;
         font-weight: 300;
         user-select: auto;
@@ -82,33 +96,67 @@ main {
         }
         &.invalid {
             box-shadow: inset 0 0 0 1px #b74545;
-            animation: invalid 1s ease;
-            @keyframes invalid {
-                0% {
-                    box-shadow: inset 0 0 0 1px #333;
+            //animation: invalid 1s ease;
+            &:focus {
+                border-radius: 0;
+                box-shadow: inset 0 0 0 1px #b74545;
+                background-color: #1d1e22;
+                &::placeholder {
+                    color: #1d1e22;
                 }
-                20% {
-                    box-shadow: inset 0 0 0 1px #b74545;
-                }
-                40% {
-                    box-shadow: inset 0 0 0 1px #333;
-                }
-                60% {
-                    box-shadow: inset 0 0 0 1px #b74545;
-                }
-                80% {
-                    box-shadow: inset 0 0 0 1px #333;
-                }
-                100% {
-                    box-shadow: inset 0 0 0 1px #b74545;
+                animation: active 1s ease;
+                @keyframes active {
+                    0% {
+                        box-shadow: inset 0 0 0 1px #b74545;
+                    }
+                    60% {
+                        box-shadow: inset 0 0 0 1px #b74545, 0 0 0 10px #b74545;
+                    }
+                    100% {
+                        box-shadow: inset 0 0 0 1px #b74545;
+                    }
                 }
             }
+            // @keyframes invalid {
+            //     0% {
+            //         box-shadow: inset 0 0 0 1px #333;
+            //     }
+            //     20% {
+            //         box-shadow: inset 0 0 0 1px #b74545;
+            //     }
+            //     40% {
+            //         box-shadow: inset 0 0 0 1px #333;
+            //     }
+            //     60% {
+            //         box-shadow: inset 0 0 0 1px #b74545;
+            //     }
+            //     80% {
+            //         box-shadow: inset 0 0 0 1px #333;
+            //     }
+            //     100% {
+            //         box-shadow: inset 0 0 0 1px #b74545;
+            //     }
+            // }
 
         }
         &:focus {
+            border-radius: 0;
+            box-shadow: inset 0 0 0 1px #333;
             background-color: #1d1e22;
             &::placeholder {
                 color: #1d1e22;
+            }
+            animation: active 1s ease;
+            @keyframes active {
+                0% {
+                    box-shadow: inset 0 0 0 1px #333;
+                }
+                60% {
+                    box-shadow: inset 0 0 0 1px #333, 0 0 0 10px rgba(255,255,255,.03);
+                }
+                100% {
+                    box-shadow: inset 0 0 0 1px #333;
+                }
             }
         }
         &::placeholder {

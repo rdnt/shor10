@@ -14,7 +14,11 @@ function error(text) {
     $("#input").addClass("invalid");
     setTimeout(function() {
         $("#error").removeClass("animate");
-    }, 300);
+        $("#input").removeClass("invalid");
+        setTimeout(function() {
+            $("#input").focus();
+        }, 500);
+    }, 1500);
 }
 
 function callback(data) {
@@ -46,6 +50,12 @@ function callback(data) {
 $("#copy-btn").click(function() {
     copyToClipboard("#result");
     animateResult();
+});
+
+$('#input').keypress(function(e) {
+    if (e.keyCode == 13) {
+        $('#submit-btn').focus();
+    }
 });
 
 function animateResult() {
