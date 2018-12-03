@@ -1,33 +1,24 @@
 $(window).on("load", function() {
     asyncRequest("#shorten", "/api/shorten", init, callback);
 });
-//var error_occured = false;
 
 function init() {
-    //
-    //error_occured = false;
     $("#error").addClass("invis");
     $("#error").html("");
     $("#input").removeClass("invalid");
 }
 
 function error(text) {
-    //error_occured = true;
     $("#error").html(text);
     $("#error").addClass("animate");
     $("#error").removeClass("invis");
     $("#input").addClass("animate");
     $("#input").addClass("invalid");
     $("#input").focus();
-
-
     setTimeout(function() {
-
         $("#error").removeClass("animate");
         $("#input").removeClass("animate");
-        setTimeout(function() {
-            $("#input").addClass("no-animate");
-        }, 100)
+        $("#input").addClass("no-animate");
     }, 1000);
 }
 
@@ -58,76 +49,20 @@ function callback(data) {
 }
 
 $("#copy-btn").click(function() {
+    // Copies result input contents to clipboard
     copyToClipboard("#result");
     animateResult();
 });
 
-$('#input').keypress(function(e) {
-    //if (error_occured) {
-    //    error_occured = false;
+$('#input').keypress(function() {
+    // Remove the invalid class if user starts typing after error
     $("#input").removeClass("invalid");
-    //    setTimeout(function() {
-
-    //    }, 1000);
-    //}
-    // {
-    //
-    //}
-
-    if (e.keyCode == 13) {
-        $('#submit-btn').focus();
-    }
-});
-
-$('#input').focus(function() {
-    //$("#error").addClass("invis");
-    //$("#input").removeClass("invalid");
 });
 
 $('#input').focusout(function() {
+    // Resets the no-animate class after error and unfocus event
     $("#input").removeClass("no-animate");
-    //$("#error").addClass("invis");
-    //$("#input").removeClass("invalid");
 });
-
-// $('#submit-btn').focus(function() {
-//     $('#input').removeClass("focus");
-// });
-//
-// $('html').mousedown(function() {
-//     $('#input').removeClass("focus");
-// });
-//
-// $('#input').mousedown(function(event) {
-//     event.stopPropagation();
-//     $('#input').addClass("focus");
-// });
-
-// $('#input').focus(function() {
-//     $('#input').addClass("focus");
-// });
-//
-//
-// $('#input').focusout(function() {
-//     $('#input').removeClass("focus");
-// });
-
-
-
-
-
-//
-// $(".base").click(function() {
-//     console.log("click");
-// });
-//
-// $(window).mouseup(function(e) {
-//     $('#input').removeClass("focus");
-// });
-//
-// $('#input').mousedown(function(e) {
-//     $('#input').addClass("focus");
-// });
 
 function animateResult() {
     $("#result").addClass("animate");
