@@ -14,25 +14,7 @@ main {
 .invis {
     display: none !important;
 }
-#commit {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    text-decoration: none;
-    color: #888;
-    padding: 0 20px;
-    font-size: 1rem;
-    font-family: 'Roboto Mono', monospace;
-    line-height: 40px;
-    opacity: 1;
-    transition: color .2s ease;
-    -webkit-tap-highlight-color: transparent;
-    font-weight: 400;
-    &:hover {
-        color: #aaa;
-    }
-}
+
 #shorten {
     padding-top: 30px;
     position: absolute;
@@ -234,5 +216,78 @@ main {
                 }
             }
         }
+    }
+}
+.link {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 300px;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: #888;
+    padding: 0 10px;
+    font-size: .9rem;
+    font-family: 'Roboto Mono', monospace;
+    line-height: 40px;
+    opacity: 1;
+    transition: color .2s ease;
+    -webkit-tap-highlight-color: transparent;
+    font-weight: 400;
+    text-align: center;
+    .copyright {
+        font-size: 1.2rem;
+    }
+    &:hover {
+        color: #aaa;
+    }
+}
+.return {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 10px 15px;
+    a {
+        text-decoration: none;
+        color: #aaa;
+        transition: color .2s ease;
+        &:hover {
+            color: #ccc;
+        }
+    }
+}
+.error {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    height: 250px;
+    transform: translateY(-125px);
+    h4 {
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 500;
+        font-size: 5rem;
+        line-height: 80px;
+        color: #aaa;
+    }
+    h5 {
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 300;
+        font-size: 2rem;
+        color: #999;
+        line-height: 50px;
+    }
+    h6 {
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 300;
+        font-size: 1rem;
+        color: #888;
+        line-height: 25px;
+    }
+    span {
+        display: inline-block;
+        color: #777;
+        font-size: 1.5rem;
+        line-height: 70px;
     }
 }
