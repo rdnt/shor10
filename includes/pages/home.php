@@ -1,4 +1,4 @@
-<a id="commit" target="_blank" href="https://github.com/ShtHappens796/Shor10">
+<a id="commit" target="_blank" rel="noopener" href="https://github.com/ShtHappens796/Shor10">
     <span><?=$shor10->getCommitHash()?></span>
 </a>
 <form id="shorten">
