@@ -113,6 +113,9 @@ main {
         }
         &.invalid {
             border: 1px solid #b74545;
+            &::placeholder {
+                color: #1d1e22;
+            }
             &.animate {
                 animation: invalid 1s ease !important;
                 @keyframes invalid {
