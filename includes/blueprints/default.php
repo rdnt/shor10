@@ -5,7 +5,6 @@
 <title><?=$shor10->title?></title>
 </head>
 <body>
-<?php $shor10->loadComponent("nav"); ?>
 <main>
 <?php $shor10->loadContent()?>
 </main>
