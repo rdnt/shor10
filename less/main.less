@@ -37,7 +37,7 @@ main {
     position: absolute;
     height: 270px;
     left: 50%;
-    top: calc(~"50% + 10px");
+    top: calc(~"50% + 20px");
     transform: translate(-50%, -50%);
     text-align: center;
     .title {
@@ -49,7 +49,7 @@ main {
         &:hover h5 {
             color: #ccc !important;
             .white {
-                color: #e56c59;
+                color: #f6644c;
             }
             .black {
                 color: #ccc;
@@ -67,6 +67,7 @@ main {
             span {
                 display: inline-block;
                 margin: 0;
+                transition: color .2s ease;
                 &.white {
                     color: #d94f39;
                 }
@@ -114,7 +115,7 @@ main {
         &.invalid {
             border: 1px solid #b74545;
             &::placeholder {
-                color: #1d1e22;
+                color: #0d0e12;
             }
             &.animate {
                 animation: invalid 1s ease !important;
