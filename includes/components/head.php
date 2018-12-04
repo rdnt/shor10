@@ -15,7 +15,7 @@
 <meta name="application-name" content="shor10.me">
 <meta name="msapplication-TileColor" content="#0d0e12">
 <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#0d0e12">
 <?=$shor10->loadStyle("reset.css")?>
 <?=$shor10->loadStyle("main.css")?>
 <?=$shor10->loadStyle("fonts.css")?>
