@@ -4,6 +4,12 @@
 <meta name="keywords" content="Shor10">
 <meta name="author" content="SHT">
 <meta name="version" content="<?=$shor10->getCommitHash()?>">
+
+<meta property="og:image" content="/images/screenshot.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/android-chrome-192x192.png">
@@ -16,6 +22,7 @@
 <meta name="msapplication-TileColor" content="#0d0e12">
 <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
 <meta name="theme-color" content="#0d0e12">
+
 <?=$shor10->loadStyle("reset.css")?>
 <?=$shor10->loadStyle("main.css")?>
 <?=$shor10->loadStyle("fonts.css")?>
