@@ -24,6 +24,7 @@
 <meta name="theme-color" content="#0d0e12">
 
 <?=$shor10->loadStyle("reset.css")?>
-<?=$shor10->loadStyle("main.css")?>
+<?=$shor10->loadStyle("grid.css")?>
 <?=$shor10->loadStyle("fonts.css")?>
 <?=$shor10->loadStyle("responsive.css")?>
+<?=$shor10->loadStyle("main.css")?>

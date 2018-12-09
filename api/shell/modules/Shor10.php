@@ -64,5 +64,9 @@ trait Shor10 {
             }
         }
     }
-
+    function getURLcount() {
+        $sql = "SELECT COUNT(*)
+                FROM urls;";
+        return $this->db->query($sql);
+    }
 }
